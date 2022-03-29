@@ -4,14 +4,16 @@ import {
     deleteItems,
     purchasedItem,
     checkAuth,
-    getItems } from '../fetch-utils';
-import { renderItem } from '../render';
+    getItems } from '../fetch-utils.js';
+import { renderItem } from '../render.js';
 
 const form = document.querySelector('.shopping-form');
 const deleteButton = document.querySelector('.delete-button');
 const logoutButton = document.querySelector('.logout-button');
-const itemList = document.querySelectorAll('.item-div-list');
+const itemList = document.querySelector('.item-div-list');
 
+checkAuth();
+displayList();
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -26,19 +28,22 @@ form.addEventListener('submit', async (e) => {
 });
 
 async function displayList(){
-
-    const items = await getItems();
     itemList.textContent = '';
+    const items = await getItems();
+    
+    
 
     for (let item of items){
+    
         const itemEl = renderItem(item);
-
+        itemList.append(itemEl);
         itemEl.addEventListener('click', async () => {
             await purchasedItem(item.id);
             displayList();
         });
-        itemList.append(item);
+        console.log(itemEl);
     }
+
 }
 
 window.addEventListener('load', () => {
@@ -48,5 +53,7 @@ window.addEventListener('load', () => {
 logoutButton.addEventListener('click', () => {
     logout();
 });
-
-deleteButton.addEventListener('click', async () =>)
+deleteButton.addEventListener('click', async () =>{
+    await deleteItems();
+    displayList();
+});

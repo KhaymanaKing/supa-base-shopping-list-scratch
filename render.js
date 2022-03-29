@@ -4,12 +4,12 @@ export function renderItem(item){
     const quantity = document.createElement('p');
 
     if (itemActual.purchased){
-        item.classlist.add('purchased');
+        itemActual.classList.add('purchased');
     } else {
-        item.classList.add('notPurchased');
+        itemActual.classList.add('notPurchased');
     }
 
-    itemActual.classlist.add('item');
+    itemActual.classList.add('item');
 
     itemActual.textContent = item.item;
     quantity.textContent = item.quantity;
