@@ -9,7 +9,7 @@ import { renderItem } from '../render.js';
 
 const form = document.querySelector('.shopping-form');
 const deleteButton = document.querySelector('.delete-button');
-const logoutButton = document.querySelector('#logout-button');
+const logoutButton = document.querySelector('.logout-button');
 const itemList = document.querySelector('.item-div-list');
 
 checkAuth();
@@ -29,19 +29,19 @@ form.addEventListener('submit', async (e) => {
 
 async function displayList(){
     itemList.textContent = '';
+    
     const items = await getItems();
     
     
-
     for (let item of items){
-    
+        
         const itemEl = renderItem(item);
-        itemList.append(itemEl);
         itemEl.addEventListener('click', async () => {
             await purchasedItem(item.id);
             displayList();
         });
-        console.log(itemEl);
+        
+        itemList.append(itemEl);
     }
 
 }
