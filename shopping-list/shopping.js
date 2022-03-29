@@ -9,7 +9,7 @@ import { renderItem } from '../render.js';
 
 const form = document.querySelector('.shopping-form');
 const deleteButton = document.querySelector('.delete-button');
-const logoutButton = document.querySelector('.logout-button');
+const logoutButton = document.querySelector('#logout-button');
 const itemList = document.querySelector('.item-div-list');
 
 checkAuth();
