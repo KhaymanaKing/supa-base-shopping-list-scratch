@@ -3,7 +3,7 @@ export function renderItem(item){
     const itemActual = document.createElement('p');
     const quantity = document.createElement('p');
 
-    if (itemActual.purchased){
+    if (item.purchased){
         itemActual.classList.add('purchased');
     } else {
         itemActual.classList.add('notPurchased');
