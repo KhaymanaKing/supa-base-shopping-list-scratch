@@ -37,6 +37,38 @@ export async function logout() {
     return (window.location.href = '../');
 }
 
-// function checkError({ data, error }) {
-//     return error ? console.error(error) : data;
-// }
+export async function createItem(item) {
+    const response = await client
+        .from('shopping_list')
+        .insert(item);
+    return checkError(response);
+}
+
+export async function deleteItems(){
+    const user = getUser();
+    const response = await client
+        .from('shopping_list')
+        .delete()
+        .match ({ user_id: user.id });
+    return checkError(response);
+}
+
+export async function purchasedItem(id){
+    const response = await client
+        .from('shopping_list')
+        .update({ purchased: true })
+        .match({ id });
+    return checkError(response);
+}
+
+export async function getItems(){
+    const response = await client
+        .from('shopping_list')
+        .select('*');
+    return checkError(response);
+}
+
+
+function checkError({ data, error }) {
+    return error ? console.error(error) : data;
+}
