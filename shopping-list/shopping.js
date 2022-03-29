@@ -1,11 +1,11 @@
-import { getItems } from "../fetch-utils";
-import { 
+import {     
     logout,
     createItem,
     deleteItems,
     purchasedItem,
-    checkAuth
-}
+    checkAuth,
+    getItems } from '../fetch-utils';
+import { renderItem } from '../render';
 
 const form = document.querySelector('.shopping-form');
 const deleteButton = document.querySelector('.delete-button');
@@ -15,13 +15,13 @@ const itemList = document.querySelectorAll('.item-div-list');
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const data = new FormData(shopping-form);
+    const data = new FormData(form);
     await createItem({
         item: data.get('itemInput'),
         quantity: data.get('quantityInput'),
         purchased: false
     });
-    shopping-form.reset();
+    form.reset();
     await displayList(); 
 });
 
@@ -36,7 +36,17 @@ async function displayList(){
         itemEl.addEventListener('click', async () => {
             await purchasedItem(item.id);
             displayList();
-        })
+        });
         itemList.append(item);
     }
 }
+
+window.addEventListener('load', () => {
+    displayList();
+});
+
+logoutButton.addEventListener('click', () => {
+    logout();
+});
+
+deleteButton.addEventListener('click', async () =>)
