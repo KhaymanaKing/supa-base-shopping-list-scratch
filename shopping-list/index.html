@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/reset.css">
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/home.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <button name="logout-button" class="logout-button">Log Out</button>
+        <div class="gutter-right logo">
+            <img src="../assets/big-logo.png" />
+        </div>
+    </header>
+    <main class="shopping-main">
+        <section name="main-section">
+            <form class= "shopping-form" name="shopping-form">
+                <span>Item</span>
+                <input type="text" class="itemInput" name="itemInput">
+                <span>Quantity</span>
+                <input type="number" class="quantity-input" name="quantityInput">
+                <button name="add-to-list">Add to List</button>
+            </form>
+            <button class="delete-button" name="delete-button"> Delete List</button>
+            <div class="item-div-list"></div>
+        </section>
+    </main>
+    <footer>
+        <div class="copy gutter-right">&copy; 2021 Alchemy Code Lab</div>
+    </footer>
+    <script type="module" src="./shopping.js"></script>
+</body>
+
+</html>
